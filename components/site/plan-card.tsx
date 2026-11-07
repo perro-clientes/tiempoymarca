@@ -1,65 +1,51 @@
-import Image from "next/image";
-import { Card } from "@/components/ui/card";
+import type { Plan } from "@/content/types";
 import { cn } from "@/lib/utils";
 import { CheckList } from "./check-list";
 import { CtaLink } from "./cta-link";
 
-type PlanCardProps = {
-  name: string;
-  description: string;
-  features: readonly string[];
-  cta: { label: string; href: string };
-  price?: string;
-  period?: string;
-  image?: { src: string; alt: string };
-  className?: string;
+const styles = {
+  default: "border border-line bg-white text-ink",
+  featured: "dark bg-bordo text-white",
+  soon: "border border-dashed border-pink-strong bg-white text-ink",
 };
 
-export function PlanCard({
-  name,
-  description,
-  features,
-  cta,
-  price,
-  period,
-  image,
-  className,
-}: PlanCardProps) {
+export function PlanCard({ plan, className }: { plan: Plan; className?: string }) {
   return (
-    <Card
+    <article
       className={cn(
-        "grid gap-6 p-6 md:p-10",
-        image && "md:grid-cols-[1fr_minmax(0,40%)] md:gap-8",
+        "flex flex-col gap-6 rounded-[28px] p-7 md:p-9",
+        styles[plan.style],
         className,
       )}
     >
-      <div className="flex flex-col items-start gap-6">
-        <div className="flex flex-col gap-3">
-          <h3 className="text-title">{name}</h3>
-          <p className="text-muted-foreground">{description}</p>
-        </div>
-        {price && (
-          <p className="flex items-baseline gap-2">
-            <span className="text-title">{price}</span>
-            {period && (
-              <span className="text-sm text-muted-foreground">{period}</span>
+      <div className="flex flex-col items-start gap-3">
+        {plan.badge && (
+          <span
+            className={cn(
+              "rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em]",
+              plan.style === "featured" ? "bg-white text-bordo" : "bg-pink text-bordo",
             )}
-          </p>
+          >
+            {plan.badge}
+          </span>
         )}
-        <CtaLink href={cta.href}>{cta.label}</CtaLink>
-        <CheckList items={features} className="mt-auto pt-4" />
+        <h3 className="font-display text-title font-extrabold">{plan.name}</h3>
+        <p className="text-muted-foreground">{plan.description}</p>
       </div>
-      {image && (
-        <div className="relative order-first aspect-[4/3] overflow-hidden rounded-lg md:order-none md:aspect-auto">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(min-width: 768px) 20vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-      )}
-    </Card>
+      <p className="flex flex-wrap items-baseline gap-x-2">
+        <span className="font-display text-[clamp(2.5rem,2rem+1.5vw,3.25rem)] font-black leading-none">
+          {plan.priceLabel}
+        </span>
+        <span className="text-muted-foreground">{plan.period}</span>
+      </p>
+      <CheckList items={plan.features} />
+      <CtaLink
+        href={plan.cta.href}
+        variant={plan.cta.variant}
+        className="mt-auto w-full"
+      >
+        {plan.cta.label}
+      </CtaLink>
+    </article>
   );
 }

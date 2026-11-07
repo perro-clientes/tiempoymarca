@@ -1,21 +1,19 @@
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
-export function Eyebrow({
-  className,
-  children,
-  ...props
-}: ComponentProps<"span">) {
+type EyebrowProps = ComponentProps<"p"> & { variant?: "text" | "pill" };
+
+export function Eyebrow({ variant = "text", className, ...props }: EyebrowProps) {
   return (
-    <span
+    <p
       className={cn(
-        "inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-black",
+        "text-xs font-bold uppercase tracking-[0.16em] md:text-sm",
+        variant === "text" && "text-brand-text",
+        variant === "pill" &&
+          "inline-flex w-fit rounded-full bg-bordo px-3.5 py-2 text-white",
         className,
       )}
       {...props}
-    >
-      <span aria-hidden className="size-2 rounded-[2px] bg-brand" />
-      {children}
-    </span>
+    />
   );
 }

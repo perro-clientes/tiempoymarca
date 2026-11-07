@@ -1,50 +1,93 @@
 import Link from "next/link";
-import { Instagram, MessageCircle } from "lucide-react";
+import { trainingLocation } from "@/content/schedule";
 import { siteConfig } from "@/lib/site-config";
+import { CurrentYear } from "./current-year";
 import { Logo } from "./logo";
 import { Container } from "./section";
 
-const socialLinks = [
-  { label: "Instagram", href: siteConfig.social.instagram, icon: Instagram },
-  { label: "WhatsApp", href: siteConfig.social.whatsapp, icon: MessageCircle },
-];
+const linkClass =
+  "rounded-sm text-on-dark transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-3">
+      <h2 className="font-bold text-white">{title}</h2>
+      <ul className="flex flex-col gap-2">{children}</ul>
+    </div>
+  );
+}
 
 export function SiteFooter() {
+  const { contact } = siteConfig;
   return (
-    <footer className="dark bg-background py-16 text-foreground">
-      <Container className="flex flex-col gap-12">
-        <div className="flex flex-col justify-between gap-10 md:flex-row">
-          <Logo size={80} />
-          <div className="flex gap-16">
-            <nav aria-label="Pie de página" className="flex flex-col gap-3">
-              {siteConfig.nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm hover:underline"
-                >
+    <footer className="dark bg-aubergine text-white">
+      <Container className="flex flex-col gap-10 py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-4">
+            <Link href="/" className="w-fit rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <Logo color="white" width={136} />
+            </Link>
+            <p className="max-w-[16rem] text-on-dark">{siteConfig.tagline}</p>
+          </div>
+
+          <FooterColumn title="Sitio">
+            {siteConfig.footerNav.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className={linkClass}>
                   {item.label}
                 </Link>
-              ))}
-            </nav>
-            <ul className="flex flex-col gap-3">
-              {socialLinks.map(({ label, href, icon: Icon }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm hover:underline"
-                  >
-                    <Icon aria-hidden className="size-4" />
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+              </li>
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title="Contacto">
+            <li>
+              <a href={`mailto:${contact.email}`} className={linkClass}>
+                {contact.email}
+              </a>
+            </li>
+            <li>
+              <a href={contact.whatsapp.url} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                WhatsApp {contact.whatsapp.display}
+              </a>
+            </li>
+            <li>
+              <a href={contact.instagram.url} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                Instagram {contact.instagram.handle}
+              </a>
+            </li>
+            <li className="text-on-dark">
+              {trainingLocation.address}, {trainingLocation.locality}
+            </li>
+          </FooterColumn>
+
+          <FooterColumn title="Legal">
+            {siteConfig.legalNav.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className={linkClass}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </FooterColumn>
         </div>
-        <p className="text-sm text-muted-foreground">© {siteConfig.name}</p>
+
+        <div className="flex flex-col gap-2 border-t border-border pt-6 text-sm text-on-dark sm:flex-row sm:justify-between">
+          <p>
+            © <CurrentYear /> {siteConfig.name}. Todos los derechos reservados.
+          </p>
+          <p>
+            {siteConfig.credits.prefix}{" "}
+            <a
+              href={siteConfig.credits.url}
+              target="_blank"
+              rel="noopener"
+              className="rounded-sm text-white underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {siteConfig.credits.name}
+            </a>
+          </p>
+        </div>
       </Container>
     </footer>
   );

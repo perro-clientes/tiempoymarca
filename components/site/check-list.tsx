@@ -10,14 +10,13 @@ export function CheckList({ items, className }: CheckListProps) {
   return (
     <ul className={cn("flex flex-col gap-3", className)}>
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-sm">
-          <span
+        <li key={item} className="flex items-start gap-3">
+          <Check
             aria-hidden
-            className="mt-px flex size-5 shrink-0 items-center justify-center rounded-sm bg-brand text-brand-foreground"
-          >
-            <Check className="size-3" strokeWidth={3} />
-          </span>
-          {item}
+            className="mt-1 size-4 shrink-0 text-brand-text"
+            strokeWidth={2.5}
+          />
+          <span>{item}</span>
         </li>
       ))}
     </ul>

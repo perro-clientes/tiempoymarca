@@ -1,27 +1,30 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { DM_Sans, Fraunces } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/lib/site-config";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
+  metadataBase: new URL(siteUrl),
   title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
-  description: siteConfig.description,
-  openGraph: { images: ["/brand/brand-logo.png"] },
   icons: {
     icon: { url: "/meta/favicon.png", type: "image/png" },
   },
 };
 
-const interTight = Inter_Tight({
+const display = Fraunces({
+  variable: "--font-display",
+  weight: ["800", "900"],
+  display: "swap",
+  subsets: ["latin"],
+});
+
+const sans = DM_Sans({
   variable: "--font-sans",
+  weight: ["400", "500", "700"],
   display: "swap",
   subsets: ["latin"],
 });
@@ -32,8 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={`${interTight.variable} font-sans antialiased`}>
+    <html
+      lang="es-AR"
+      className={`${display.variable} ${sans.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
           forcedTheme="light"

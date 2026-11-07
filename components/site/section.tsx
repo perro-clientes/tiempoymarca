@@ -1,41 +1,44 @@
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
+/** Contenedor de 1240 px de contenido con 24 px de margen lateral. */
 export function Container({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={cn("mx-auto w-full max-w-[1376px] px-4 md:px-8", className)}
+      className={cn("mx-auto w-full max-w-[1288px] px-6", className)}
       {...props}
     />
   );
 }
 
 const tones = {
-  default: "bg-background text-foreground",
-  muted: "bg-secondary text-secondary-foreground",
-  // .dark invierte los tokens de todo lo que esté dentro de la sección.
+  cream: "bg-background text-foreground",
+  pink: "bg-pink text-ink",
+  // .dark invierte los tokens dentro de la sección.
   dark: "dark bg-background text-foreground",
-  // Sobre el color de marca, el botón pasa a blanco y el gris muted se aclara para llegar a 4.5:1.
-  brand:
-    "dark bg-brand text-brand-foreground [--cta-foreground:0_0%_0%] [--cta:0_0%_100%] [--muted-foreground:0_0%_90%]",
+  brand: "dark bg-bordo text-white",
 };
 
+export type SectionTone = keyof typeof tones;
+
 type SectionProps = ComponentProps<"section"> & {
-  tone?: keyof typeof tones;
+  tone?: SectionTone;
+  containerClassName?: string;
 };
 
 export function Section({
-  tone = "default",
+  tone = "cream",
   className,
+  containerClassName,
   children,
   ...props
 }: SectionProps) {
   return (
     <section
-      className={cn("py-16 md:py-section", tones[tone], className)}
+      className={cn("py-16 md:py-28", tones[tone], className)}
       {...props}
     >
-      <Container>{children}</Container>
+      <Container className={containerClassName}>{children}</Container>
     </section>
   );
 }

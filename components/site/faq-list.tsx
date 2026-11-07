@@ -1,37 +1,33 @@
-import type { ReactNode } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+"use client";
 
-type FaqListProps = {
-  items: readonly { question: string; answer: ReactNode }[];
-  className?: string;
-};
+import * as Accordion from "@radix-ui/react-accordion";
+import { ChevronRight } from "lucide-react";
+import type { Faq } from "@/content/types";
 
-export function FaqList({ items, className }: FaqListProps) {
+export function FaqList({ items }: { items: readonly Faq[] }) {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className={className ?? "mx-auto flex max-w-3xl flex-col gap-3"}
-    >
+    <Accordion.Root type="single" collapsible className="mx-auto flex max-w-[900px] flex-col gap-3">
       {items.map((item) => (
-        <AccordionItem
+        <Accordion.Item
           key={item.question}
           value={item.question}
-          className="rounded-lg border-0 bg-card px-5 text-card-foreground"
+          className="rounded-2xl border border-line bg-white text-ink"
         >
-          <AccordionTrigger className="gap-4 py-5 text-left text-base font-medium hover:no-underline">
-            {item.question}
-          </AccordionTrigger>
-          <AccordionContent className="text-base text-muted-foreground">
-            {item.answer}
-          </AccordionContent>
-        </AccordionItem>
+          <Accordion.Header>
+            <Accordion.Trigger className="group flex w-full items-center gap-3 rounded-2xl px-6 py-5 text-left font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <ChevronRight
+                aria-hidden
+                className="size-4 shrink-0 text-bordo transition-transform group-data-[state=open]:rotate-90"
+                strokeWidth={2.5}
+              />
+              {item.question}
+            </Accordion.Trigger>
+          </Accordion.Header>
+          <Accordion.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <p className="px-6 pb-5 pl-[52px] text-muted-foreground">{item.answer}</p>
+          </Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   );
 }
