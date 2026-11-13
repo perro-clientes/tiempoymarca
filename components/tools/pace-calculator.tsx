@@ -412,14 +412,16 @@ function CalorieEstimator() {
   );
 }
 
-export function PaceCalculator() {
+export function PaceCalculator({ showEstimates = true }: { showEstimates?: boolean }) {
   return (
     <div className="flex flex-col gap-5">
       <PaceTimeDistance />
-      <div className="grid gap-5 lg:grid-cols-2">
-        <RacePredictor />
-        <CalorieEstimator />
-      </div>
+      {showEstimates && (
+        <div className="grid gap-5 lg:grid-cols-2">
+          <RacePredictor />
+          <CalorieEstimator />
+        </div>
+      )}
     </div>
   );
 }

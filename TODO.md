@@ -24,6 +24,7 @@ Todo lo que está entre [CORCHETES] se ve tal cual en el sitio hasta que se comp
 - **Logo:** `public/images/logo-bordo.png` y `logo-white.png` se generaron a partir de `public/brand/brand-logo.png`. Pedir el wordmark oficial en SVG y reemplazarlos.
 - **Fotos:** se usaron las de `public/others`, optimizadas en `public/images`. Confirmar permiso de uso de las personas que aparecen y del evento (Expo, logos de terceros).
 
+- **Calculadora de ritmos:** los bloques "Tu marca en otras distancias" y "Calorías" están ocultos hasta confirmar los datos. Para mostrarlos, poner `SHOW_PACE_ESTIMATES = true` en `content/tools.ts`.
 - **Herramientas:** los textos de /herramientas y de la calculadora de ritmos (títulos, descripciones, ayudas y el aviso de salud) no venían de un diseño aprobado. Revisarlos. Para sumar otra herramienta: agregarla en `content/tools.ts` y crear su página en `app/(site)/herramientas/<slug>`.
 
 ## Configuración pendiente
