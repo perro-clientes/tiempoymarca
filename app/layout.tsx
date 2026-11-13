@@ -10,9 +10,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
-  icons: {
-    icon: { url: "/meta/favicon.png", type: "image/png" },
-  },
+  // Nombre del acceso directo en iPhone (si no, usa el título de la página guardada).
+  appleWebApp: { title: siteConfig.name },
 };
 
 const display = Fraunces({
