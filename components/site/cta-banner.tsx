@@ -1,12 +1,13 @@
 import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 import { CtaLink } from "./cta-link";
 import { Logo } from "./logo";
 import { Container } from "./section";
 
 /** Banner final: "Tu próxima marca empieza con una clase". */
-export function CtaBanner() {
+export function CtaBanner({ className }: { className?: string }) {
   return (
-    <section className="pb-20 md:pb-28">
+    <section className={cn("pb-20 md:pb-28", className)}>
       <Container className="max-w-[1368px]">
         <div className="dark flex flex-col items-center gap-6 rounded-[32px] bg-bordo px-6 py-14 text-center text-white md:py-[72px]">
           <Logo color="white" width={210} />

@@ -5,7 +5,6 @@ import { BeforeAfterCards } from "@/components/site/before-after-cards";
 import { CtaBanner } from "@/components/site/cta-banner";
 import { CtaLink } from "@/components/site/cta-link";
 import { Eyebrow } from "@/components/site/eyebrow";
-import { FaqList } from "@/components/site/faq-list";
 import { FeatureGrid } from "@/components/site/feature-grid";
 import { PlanCard } from "@/components/site/plan-card";
 import { ScheduleGrid } from "@/components/site/schedule";
@@ -13,7 +12,6 @@ import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SplitHero } from "@/components/site/split-hero";
 import { StepsRow } from "@/components/site/steps";
-import { teamFaqs } from "@/content/faqs";
 import { plans } from "@/content/plans";
 import { schedule } from "@/content/schedule";
 import { siteConfig } from "@/lib/site-config";
@@ -91,10 +89,10 @@ export default function RunningTeamPage() {
           </ul>
         }
         image={{
-          src: "/images/team-hero.jpg",
-          alt: "Integrantes de Tiempo & Marca posando con la bandera del equipo y sus medallas en el parque",
-          width: 1028,
-          height: 877,
+          src: "/images/galeria-expo.jpg",
+          alt: "Decenas de corredores de Tiempo & Marca reunidos con sus medallas frente al escenario de la Expo de una carrera",
+          width: 1280,
+          height: 789,
         }}
       />
 
@@ -173,14 +171,7 @@ export default function RunningTeamPage() {
         </blockquote>
       </Section>
 
-      <Section>
-        <SectionHeading layout="center" eyebrow="Planes y pagos" title="Preguntas sobre el team" />
-        <div className="mt-10">
-          <FaqList items={teamFaqs} />
-        </div>
-      </Section>
-
-      <CtaBanner />
+      <CtaBanner className="pt-16 md:pt-28" />
     </>
   );
 }

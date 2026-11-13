@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FileDown, MonitorPlay, PlayCircle } from "lucide-react";
 import { CoachesList } from "@/components/site/coaches-list";
 import { CtaBanner } from "@/components/site/cta-banner";
 import { CtaLink } from "@/components/site/cta-link";
@@ -28,27 +29,27 @@ const classSteps = [
     description: "Venís, entrenás con el grupo y charlamos sobre tu experiencia y lo que querés lograr.",
   },
   {
-    title: "Entrada en calor y técnica",
-    description: "ABC de carrera: skipping, talones a la cola, tijeras y sus variantes, con y sin elementos.",
+    title: "Entrada en calor",
+    description:
+      "Preparamos el cuerpo para el entrenamiento. Combinamos trote, movilidad articular, elongación dinámica, activación de zona media y ejercicios de técnica de carrera.",
   },
   {
     title: "Bloque principal",
-    description: "El estímulo del día: pasadas, fondos o cambios de ritmo, progresivos y adaptados a tu nivel.",
+    description:
+      "El estímulo del día. Pasadas, cambios de ritmo, sprints, trotes o trabajos específicos, siempre adaptados a tu nivel y tus objetivos.",
   },
   {
-    title: "Fuerza y flexibilidad",
-    description: "Trabajo complementario para rendir más y reducir el riesgo de lesiones.",
+    title: "Vuelta a la calma",
+    description:
+      "Terminamos con ejercicios de elongación y un momento para compartir, charlar y conectar con tus compañeros. Porque entrenar también es disfrutar del grupo.",
   },
 ];
 
-const techniqueBenefits = [
-  { title: "Zancada más eficiente", description: "Aprovechás todos tus recursos físicos." },
-  { title: "Más velocidad", description: "Biomecánica bien aplicada." },
-  { title: "Economía de movimiento", description: "Menos gasto de energía, menos fatiga." },
-  { title: "Menos lesiones", description: "Corregís vicios de técnica a tiempo." },
+const courseFormat = [
+  { icon: MonitorPlay, label: "Curso 100% online" },
+  { icon: PlayCircle, label: "6 clases grabadas para que mires cuando quieras" },
+  { icon: FileDown, label: "PDF con filminas para descargar" },
 ];
-
-const techniqueDrills = ["Skipping", "Talones a la cola", "Tijeras", "Tándem", "Braceo", "Técnica circular y pendular"];
 
 export default function HomePage() {
   return (
@@ -144,28 +145,33 @@ export default function HomePage() {
       <Section tone="pink">
         <div className="grid items-start gap-10 md:grid-cols-2 md:gap-14">
           <div className="flex flex-col gap-6">
-            <SectionHeading
-              eyebrow="Cursos Tiempo & Marca"
-              title="Técnica de carrera"
-              description="Un curso de Marina Fernández y Florencia Acosta para entender cómo corrés y corregirlo: de las fases de la zancada al ABC de carrera, con estrategias de corrección para corredores y entrenadores."
-            />
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {techniqueBenefits.map((item) => (
-                <li key={item.title} className="rounded-2xl bg-white p-5">
-                  <h3 className="font-bold">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+            <SectionHeading eyebrow="Cursos Tiempo & Marca" title="Las bases del entrenamiento de la resistencia" />
+            <ul aria-label="Formato del curso" className="flex flex-col gap-3">
+              {courseFormat.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-4 rounded-2xl bg-white p-4 font-bold">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-pink text-bordo">
+                    <Icon aria-hidden className="size-5" />
+                  </span>
+                  {label}
                 </li>
               ))}
             </ul>
-            <ul aria-label="Contenidos del ABC de carrera" className="flex flex-wrap gap-2">
-              {techniqueDrills.map((drill) => (
-                <li key={drill} className="rounded-full border-[1.5px] border-bordo px-4 py-2 text-sm font-medium text-bordo">
-                  {drill}
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-col gap-3 text-lead text-muted-foreground">
+              <p>El curso te brinda las herramientas básicas para poder crear tus entrenamientos:</p>
+              <p>
+                Los principios que te guían en la planificación están en el módulo I, los diferentes métodos para
+                entrenar la resistencia en el módulo II y los posibles test para evaluar en el módulo III.
+              </p>
+              <p>
+                En el módulo IV están los contenidos necesarios para generar un plan de entrenamiento integral a
+                través de la incorporación de la técnica, la fuerza, la velocidad y la flexibilidad.
+              </p>
+            </div>
             <div className="flex flex-wrap items-center gap-5">
               <CtaLink href="/contacto">Quiero info del curso</CtaLink>
+              <CtaLink href={siteConfig.contact.whatsapp.url} variant="outline">
+                Consultar por WhatsApp
+              </CtaLink>
               <a
                 href={siteConfig.contact.instagramCursos.url}
                 target="_blank"
@@ -179,7 +185,7 @@ export default function HomePage() {
           <div className="relative aspect-[562/680] overflow-hidden rounded-[28px]">
             <Image
               src="/images/tecnica-carrera.jpg"
-              alt="Profesora explicando técnica de carrera a un grupo sentado en el pasto de la pista"
+              alt="Profesora dando una explicación a un grupo sentado en el pasto de la pista"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"

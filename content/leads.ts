@@ -3,7 +3,7 @@
 export const interestOptions = [
   { value: "grupos_presenciales", label: "Grupos presenciales" },
   { value: "plan_distancia", label: "Plan a distancia" },
-  { value: "curso_tecnica", label: "Curso de técnica" },
+  { value: "curso_online", label: "Curso online" },
   { value: "plan_autoguiado", label: "Plan autoguiado" },
 ] as const;
 

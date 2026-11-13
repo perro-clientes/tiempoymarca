@@ -6,21 +6,21 @@ export const objectives: Objective[] = [
     icon: "calle",
     title: "Carreras de calle",
     description:
-      "De tus primeros 5K a la media o el maratón. Ritmos, fondos y estrategia para llegar bien al día de la carrera.",
+      "De tus primeros 3K hasta 21K o maratón. Fondos, pasadas, trabajos de ritmo y sesiones específicas para desarrollar tu rendimiento y progresar en cada distancia.",
   },
   {
     id: "pista-y-velocidad",
     icon: "pista",
     title: "Pista y velocidad",
     description:
-      "Técnica, pasadas y cambios de ritmo para bajar tus tiempos y encarar con éxito la levantada final.",
+      "Trabajos de técnica de carrera, correcciones específicas, fuerza y pliometría para mejorar tu rendimiento y potenciar cada zancada.",
   },
   {
     id: "trail",
     icon: "trail",
     title: "Trail",
     description:
-      "Fuerza, subidas y resistencia para correr en montaña y terrenos irregulares con confianza.",
+      "Fuerza, resistencia y trabajos específicos de subidas y bajadas para adquirir las habilidades que exige cada terreno.",
   },
   {
     id: "salud-y-bienestar",
