@@ -48,7 +48,7 @@ export const plans: Plan[] = [
     description: "Una planificación prediseñada para entrenar de forma autónoma.",
     status: "proximamente",
     price: null,
-    priceLabel: "[PRECIO]",
+    priceLabel: "Consultar",
     period: "/ 4 semanas",
     features: [
       "Planes de 4 semanas para 5K y 10K",

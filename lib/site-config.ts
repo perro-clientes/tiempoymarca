@@ -4,11 +4,13 @@ export const siteConfig = {
   nav: [
     { label: "Inicio", href: "/" },
     { label: "Running Team", href: "/running-team" },
+    { label: "Herramientas", href: "/herramientas" },
     { label: "Contacto", href: "/contacto" },
   ],
   footerNav: [
     { label: "Inicio", href: "/" },
     { label: "Running Team y planes", href: "/running-team" },
+    { label: "Herramientas", href: "/herramientas" },
     { label: "Contacto", href: "/contacto" },
   ],
   legalNav: [
