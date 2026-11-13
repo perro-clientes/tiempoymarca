@@ -16,10 +16,10 @@ import { homeFaqs } from "@/content/faqs";
 import { objectives } from "@/content/objectives";
 import { schedule, trainingLocation } from "@/content/schedule";
 import { siteConfig } from "@/lib/site-config";
+import { pages } from "@/content/pages";
 import { pageMetadata } from "@/lib/metadata";
 
-const heroDescription =
-  "Entrenamiento integral de running en la pista de atletismo del Parque Municipal de Lomas de Zamora. Para correr tu primera carrera, bajar tu marca o simplemente moverte más y mejor.";
+const heroDescription = pages.home.description;
 
 export const metadata = pageMetadata({ description: heroDescription, path: "/" });
 

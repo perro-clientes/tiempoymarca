@@ -4,9 +4,10 @@ import { CtaBanner } from "@/components/site/cta-banner";
 import { Container } from "@/components/site/section";
 import { ToolHeader } from "@/components/tools/tool-header";
 import { toolHref, tools, type ToolIcon } from "@/content/tools";
+import { pages } from "@/content/pages";
 import { pageMetadata } from "@/lib/metadata";
 
-const description = "Calculadoras simples para planificar tus entrenamientos y tus carreras.";
+const { description } = pages.herramientas;
 
 export const metadata = pageMetadata({ title: "Herramientas", description, path: "/herramientas" });
 
@@ -15,7 +16,7 @@ const icons: Record<ToolIcon, LucideIcon> = { calculadora: Calculator };
 export default function HerramientasPage() {
   return (
     <>
-      <ToolHeader title="Herramientas para corredores" description={description} />
+      <ToolHeader title={pages.herramientas.title} description={description} />
       <Container className="pb-16 md:pb-28">
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => {

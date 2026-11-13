@@ -21,7 +21,7 @@ const sportsLocation = {
   name: siteConfig.name,
   description: siteConfig.tagline,
   url: absoluteUrl("/"),
-  image: absoluteUrl("/images/og.jpg"),
+  image: absoluteUrl("/images/hero-circuito.jpg"),
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.whatsapp.e164,
   sameAs: [siteConfig.contact.instagram.url, siteConfig.contact.instagramCursos.url],

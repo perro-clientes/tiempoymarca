@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 
-const ogImage = {
-  url: "/images/og.jpg",
-  width: 1200,
-  height: 630,
-  alt: "Integrantes de Tiempo & Marca con la bandera del equipo en el parque",
-};
-
 export function pageMetadata({
   title,
   description,
@@ -29,8 +22,8 @@ export function pageMetadata({
       url: path,
       title: fullTitle,
       description,
-      images: [ogImage],
     },
-    twitter: { card: "summary_large_image", title: fullTitle, description, images: [ogImage.url] },
+    // La imagen sale del opengraph-image de cada ruta; X usa la misma si no hay twitter:image.
+    twitter: { card: "summary_large_image", title: fullTitle, description },
   };
 }

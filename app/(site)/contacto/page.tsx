@@ -5,11 +5,11 @@ import { ScheduleGrid } from "@/components/site/schedule";
 import { Container } from "@/components/site/section";
 import { schedule, trainingLocation } from "@/content/schedule";
 import { siteConfig } from "@/lib/site-config";
+import { pages } from "@/content/pages";
 import { pageMetadata } from "@/lib/metadata";
 import { ContactForm } from "./contact-form";
 
-const intro =
-  "Dejanos tus datos y te escribimos para coordinar tu primer entrenamiento o armar tu plan a distancia.";
+const intro = pages.contacto.description;
 
 export const metadata = pageMetadata({ title: "Contacto", description: intro, path: "/contacto" });
 

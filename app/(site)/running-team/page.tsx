@@ -15,10 +15,10 @@ import { StepsRow } from "@/components/site/steps";
 import { plans } from "@/content/plans";
 import { schedule } from "@/content/schedule";
 import { siteConfig } from "@/lib/site-config";
+import { pages } from "@/content/pages";
 import { pageMetadata } from "@/lib/metadata";
 
-const heroDescription =
-  "Un plan pensado para tu objetivo, profes que te corrigen en la pista y un grupo que te espera cada semana. En el Parque Municipal de Lomas de Zamora o a distancia, desde donde estés.";
+const heroDescription = pages.runningTeam.description;
 
 export const metadata = pageMetadata({
   title: "TyM Running Team",
