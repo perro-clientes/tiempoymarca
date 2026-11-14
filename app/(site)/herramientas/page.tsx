@@ -9,7 +9,11 @@ import { pageMetadata } from "@/lib/metadata";
 
 const { description } = pages.herramientas;
 
-export const metadata = pageMetadata({ title: "Herramientas", description, path: "/herramientas" });
+export const metadata = pageMetadata({
+  title: pages.herramientas.seo.title,
+  description: pages.herramientas.seo.description,
+  path: "/herramientas",
+});
 
 const icons: Record<ToolIcon, LucideIcon> = { calculadora: Calculator };
 

@@ -27,7 +27,13 @@ Todo lo que está entre [CORCHETES] se ve tal cual en el sitio hasta que se comp
 - **Calculadora de ritmos:** los bloques "Tu marca en otras distancias" y "Calorías" están ocultos hasta confirmar los datos. Para mostrarlos, poner `SHOW_PACE_ESTIMATES = true` en `content/tools.ts`.
 - **Herramientas:** los textos de /herramientas y de la calculadora de ritmos (títulos, descripciones, ayudas y el aviso de salud) no venían de un diseño aprobado. Revisarlos. Para sumar otra herramienta: agregarla en `content/tools.ts` y crear su página en `app/(site)/herramientas/<slug>`.
 
+- **SEO, textos míos:** los títulos y descripciones para buscadores (`seo` en `content/pages.ts`, y el título "Calculadora de ritmos para running") y los textos de la página 404 (`app/not-found.tsx`). Revisarlos.
+- **SEO, ubicación exacta:** si pasan las coordenadas de la pista (o el link exacto de Google Maps), se suman a los datos estructurados y a "Cómo llegar".
+
 ## Configuración pendiente
+
+- **Google Search Console:** verificar el dominio (lo más simple es por DNS, como "propiedad de dominio") y enviar `https://www.tiempoymarca.ar/sitemap.xml`.
+- **Perfil de Empresa de Google (Google Maps):** crearlo o reclamarlo con la dirección de la pista, los horarios y el link al sitio. Es lo que más pesa para aparecer en búsquedas como "running Lomas de Zamora".
 
 - **Vercel:** cargar `RESEND_API_KEY`, `RESEND_FROM_EMAIL` y `NEXT_PUBLIC_SITE_URL` en las variables del proyecto (en local ya están).
 - **URL canónica:** `tiempoymarca.ar` redirige a `www.tiempoymarca.ar`. Usar `NEXT_PUBLIC_SITE_URL=https://www.tiempoymarca.ar` o hacer principal el dominio sin `www` en Vercel.

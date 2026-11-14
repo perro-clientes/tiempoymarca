@@ -6,7 +6,7 @@ import { paceCalculatorDescription as description, SHOW_PACE_ESTIMATES } from "@
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
-  title: "Calculadora de ritmos",
+  title: "Calculadora de ritmos para running",
   description,
   path: "/herramientas/calculadora-de-ritmos",
 });

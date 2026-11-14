@@ -25,9 +25,9 @@ export function LegalPage({ tone, title, subtitle, intro, sections }: LegalPageP
       </section>
       <Container className="grid gap-10 py-14 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:gap-12 md:py-20">
         <nav aria-labelledby="legal-toc" className="h-fit rounded-3xl border border-line bg-white p-6 md:sticky md:top-28">
-          <h2 id="legal-toc" className="mb-4 font-bold">
+          <p id="legal-toc" className="mb-4 font-bold">
             En esta página
-          </h2>
+          </p>
           <ol className="flex flex-col gap-2.5 text-sm">
             {sections.map((section, i) => (
               <li key={section.id}>

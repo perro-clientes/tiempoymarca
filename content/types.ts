@@ -25,6 +25,8 @@ export type ScheduleSlot = {
   days: Weekday[];
   daysLabel: string;
   time: string;
+  /** Hora de fin estimada. Las clases duran entre 1 h y 1 h 30: se toma el máximo. */
+  endTime: string;
   coachIds: CoachId[];
   coachesLabel: string;
 };

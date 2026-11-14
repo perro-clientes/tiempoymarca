@@ -10,6 +10,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
+  applicationName: siteConfig.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
   // Nombre del acceso directo en iPhone (si no, usa el título de la página guardada).
   appleWebApp: { title: siteConfig.name },
 };

@@ -16,9 +16,10 @@ const schemaDays: Record<string, string> = {
 };
 
 const sportsLocation = {
-  "@context": "https://schema.org",
   "@type": "SportsActivityLocation",
+  "@id": absoluteUrl("/#organizacion"),
   name: siteConfig.name,
+  logo: absoluteUrl("/images/logo-bordo.png"),
   description: siteConfig.tagline,
   url: absoluteUrl("/"),
   image: absoluteUrl("/images/hero-circuito.jpg"),
@@ -36,8 +37,22 @@ const sportsLocation = {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: slot.days.map((day) => `https://schema.org/${schemaDays[day]}`),
     opens: slot.time.padStart(5, "0"),
+    closes: slot.endTime.padStart(5, "0"),
   })),
 };
+
+// WebSite: Google lo usa para mostrar el nombre del sitio en los resultados.
+const website = {
+  "@type": "WebSite",
+  "@id": absoluteUrl("/#sitio"),
+  name: siteConfig.name,
+  alternateName: "TyM",
+  url: absoluteUrl("/"),
+  inLanguage: "es-AR",
+  publisher: { "@id": absoluteUrl("/#organizacion") },
+};
+
+const structuredData = { "@context": "https://schema.org", "@graph": [website, sportsLocation] };
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -53,7 +68,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         {children}
       </main>
       <SiteFooter />
-      <JsonLd data={sportsLocation} />
+      <JsonLd data={structuredData} />
     </div>
   );
 }

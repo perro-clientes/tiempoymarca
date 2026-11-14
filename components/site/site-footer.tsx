@@ -8,12 +8,16 @@ import { Container } from "./section";
 const linkClass =
   "rounded-sm text-on-dark transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
+// Los títulos de columna no son encabezados: así no ensucian la estructura H1-H6 de cada página.
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
+  const id = `footer-${title.toLowerCase()}`;
   return (
-    <div className="flex flex-col gap-3">
-      <h2 className="font-bold text-white">{title}</h2>
+    <nav aria-labelledby={id} className="flex flex-col gap-3">
+      <p id={id} className="font-bold text-white">
+        {title}
+      </p>
       <ul className="flex flex-col gap-2">{children}</ul>
-    </div>
+    </nav>
   );
 }
 

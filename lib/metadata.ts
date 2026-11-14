@@ -3,16 +3,20 @@ import { siteConfig } from "@/lib/site-config";
 
 export function pageMetadata({
   title,
+  absoluteTitle,
   description,
   path,
 }: {
+  /** Se completa con " | Tiempo & Marca". */
   title?: string;
+  /** Título completo, sin agregarle el nombre del sitio. */
+  absoluteTitle?: string;
   description: string;
   path: string;
 }): Metadata {
-  const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const fullTitle = absoluteTitle ?? (title ? `${title} | ${siteConfig.name}` : siteConfig.name);
   return {
-    title: title ?? { absolute: siteConfig.name },
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: path },
     openGraph: {

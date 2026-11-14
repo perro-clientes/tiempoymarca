@@ -21,8 +21,8 @@ import { pageMetadata } from "@/lib/metadata";
 const heroDescription = pages.runningTeam.description;
 
 export const metadata = pageMetadata({
-  title: "TyM Running Team",
-  description: heroDescription,
+  title: pages.runningTeam.seo.title,
+  description: pages.runningTeam.seo.description,
   path: "/running-team",
 });
 
@@ -63,7 +63,7 @@ export default function RunningTeamPage() {
         eyebrow={<Eyebrow variant="pill">TyM Running Team</Eyebrow>}
         title={
           <>
-            No entrenes solo.
+            No entrenes solo.{" "}
             <br />
             Corré en equipo.
           </>

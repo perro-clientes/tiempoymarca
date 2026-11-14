@@ -21,7 +21,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 const heroDescription = pages.home.description;
 
-export const metadata = pageMetadata({ description: heroDescription, path: "/" });
+export const metadata = pageMetadata({ absoluteTitle: pages.home.seo.title, description: pages.home.seo.description, path: "/" });
 
 const classSteps = [
   {
@@ -60,7 +60,7 @@ export default function HomePage() {
         eyebrow={<Eyebrow className="text-white">Equipo de entrenamiento · Lomas de Zamora</Eyebrow>}
         title={
           <>
-            Corré mejor.
+            Corré mejor.{" "}
             <br />
             Corré en equipo.
           </>

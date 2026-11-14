@@ -11,7 +11,7 @@ import { ContactForm } from "./contact-form";
 
 const intro = pages.contacto.description;
 
-export const metadata = pageMetadata({ title: "Contacto", description: intro, path: "/contacto" });
+export const metadata = pageMetadata({ title: pages.contacto.seo.title, description: pages.contacto.seo.description, path: "/contacto" });
 
 const { contact } = siteConfig;
 
