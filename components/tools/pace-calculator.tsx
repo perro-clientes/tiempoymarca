@@ -18,24 +18,24 @@ import {
 } from "@/lib/tools/running";
 import { cn } from "@/lib/utils";
 
-const inputClass =
+export const inputClass =
   "h-12 w-full rounded-xl border border-input bg-cream px-3 text-center text-lg font-bold text-ink placeholder:font-normal placeholder:text-muted-foreground focus-visible:border-bordo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring aria-[invalid=true]:border-destructive";
 
-const chipClass =
+export const chipClass =
   "inline-flex min-h-11 items-center rounded-full border-[1.5px] border-input bg-white px-4 text-sm font-medium text-bordo transition-colors peer-checked:border-bordo peer-checked:bg-bordo peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 hover:border-bordo";
 
 // ---------- Piezas de formulario ----------
 
-type Parsed = { value: number; invalid: boolean; empty: boolean };
+export type Parsed = { value: number; invalid: boolean; empty: boolean };
 
-function read(text: string, max?: number): Parsed {
+export function read(text: string, max?: number): Parsed {
   const value = parseInput(text);
   if (value === null) return { value: 0, invalid: false, empty: true };
   const invalid = Number.isNaN(value) || (max !== undefined && value >= max);
   return { value: invalid ? 0 : value, invalid, empty: false };
 }
 
-function Card({ title, description, children }: { title: string; description: string; children: ReactNode }) {
+export function Card({ title, description, children }: { title: string; description: string; children: ReactNode }) {
   return (
     <section className="flex flex-col gap-6 rounded-[28px] border border-line bg-white p-6 md:p-9">
       <div className="flex flex-col gap-2">
@@ -47,7 +47,7 @@ function Card({ title, description, children }: { title: string; description: st
   );
 }
 
-function NumberBox({
+export function NumberBox({
   label,
   value,
   onChange,
@@ -178,7 +178,7 @@ function DistanceField({
   );
 }
 
-function Result({ label, value, detail }: { label: string; value: string; detail?: string }) {
+export function Result({ label, value, detail }: { label: string; value: string; detail?: string }) {
   return (
     <div className="flex flex-col gap-1 rounded-2xl bg-bordo p-6 text-white">
       <span className="text-sm font-bold uppercase tracking-[0.14em] text-pink">{label}</span>
@@ -188,7 +188,7 @@ function Result({ label, value, detail }: { label: string; value: string; detail
   );
 }
 
-function Hint({ children, error }: { children: ReactNode; error?: boolean }) {
+export function Hint({ children, error }: { children: ReactNode; error?: boolean }) {
   return (
     <p className={cn("rounded-2xl border border-dashed p-6 text-center", error ? "border-destructive text-destructive" : "border-line text-muted-foreground")}>
       {children}

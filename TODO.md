@@ -30,6 +30,8 @@ Todo lo que está entre [CORCHETES] se ve tal cual en el sitio hasta que se comp
 - **SEO, textos míos:** los títulos y descripciones para buscadores (`seo` en `content/pages.ts`, y el título "Calculadora de ritmos para running") y los textos de la página 404 (`app/not-found.tsx`). Revisarlos.
 - **SEO, ubicación exacta:** si pasan las coordenadas de la pista (o el link exacto de Google Maps), se suman a los datos estructurados y a "Cómo llegar".
 
+- **Calculadora de intensidades (prueba interna):** está en `/herramientas/calculadora-de-intensidades`, sin links, fuera del sitemap y con noindex. Cualquiera que tenga el link puede abrirla. Para publicarla: sumarla a `content/tools.ts`, sacar el noindex de su página y crear su `opengraph-image.tsx`.
+
 ## Configuración pendiente
 
 - **Google Search Console:** verificar el dominio (lo más simple es por DNS, como "propiedad de dominio") y enviar `https://www.tiempoymarca.ar/sitemap.xml`.
